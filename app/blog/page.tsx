@@ -1,28 +1,37 @@
+'use client'
+
 import { Metadata } from "next"
 import Link from "next/link"
+import { useEffect, useState } from "react"
 
-async function getData() {
-    const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
-        // const response = await fetch('https://jsonplaceholder.typicode.com/postssdfgsdggd', {
+// async function getData() {
+//     const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
+//         // const response = await fetch('https://jsonplaceholder.typicode.com/postssdfgsdggd', {
 
-        next: {
-            revalidate: 60
-        }
-    });
+//         next: {
+//             revalidate: 60
+//         }
+//     });
 
-    // if (!response.ok) {
-    //     throw new Error(`HTTP error! status: ${response.status}`)
-    // }
+//     // if (!response.ok) {
+//     //     throw new Error(`HTTP error! status: ${response.status}`)
+//     // }
 
-    return response.json()
-}
+//     return response.json()
+// }
 
 export const metadata: Metadata = {
   title: 'Blog | Next App',
 }
 
-export default async function Blog() {
-    const posts = await getData()
+// export default async function Blog() {
+//     const posts = await getData()
+
+export default function Blog() {
+    const [posts, setPosts] = useState<any[]>([])
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {}, [])
 
     return (
         <>
