@@ -1,6 +1,7 @@
 'use client'
 
 import { Posts } from "@/components/Posts"
+import { PostSearch } from "@/components/PostSearch"
 import { getAllPosts } from "@/sevices/getPosts"
 import { Metadata } from "next"
 import Link from "next/link"
@@ -22,9 +23,9 @@ import { useEffect, useState } from "react"
 //     return response.json()
 // }
 
-export const metadata: Metadata = {
-  title: 'Blog | Next App',
-}
+// export const metadata: Metadata = {
+//   title: 'Blog | Next App',
+// }
 
 // export default async function Blog() {
 //     const posts = await getData()
@@ -42,6 +43,7 @@ export default function Blog() {
     return (
         <>
             <h1>Blog page</h1>
+            <PostSearch onSearch={setPosts}/>
             {loading ? (<h3>Loading</h3>
             ) : (
                 <Posts posts={posts} />
