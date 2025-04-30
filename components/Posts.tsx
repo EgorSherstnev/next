@@ -1,11 +1,25 @@
-import Link from 'next/link'
-import React from 'react'
+'use client'
 
-type Props = {
-    posts: any[]
-}
-const Posts = ({posts}: Props) => {
-    return (
+import { usePosts } from '@/store'
+import Link from 'next/link'
+import React, { useEffect } from 'react'
+
+// type Props = {
+//     posts: any[]
+// }
+const Posts = () => {
+    const [ posts, loading, getAllPosts ] = usePosts((state) => ([
+        state.posts,
+        state.loading,
+        state.getAllPosts
+        ]
+    ))
+
+    useEffect(() => {
+        getAllPosts()
+    }, [getAllPosts])
+    return (loading ? ( <h3>Loading</h3> 
+        ) : (     
         <ul>
             {posts.map((post: any) => (
                 <li key={post.id}>
@@ -14,7 +28,8 @@ const Posts = ({posts}: Props) => {
                     </Link>
                 </li>
             ))}
-        </ul>
+        </ul> 
+        )
     )
 }
 
