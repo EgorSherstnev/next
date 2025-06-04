@@ -19,5 +19,10 @@
     "react-dom": "19.0.0",
     "typescript": "^5.8.3",
     "zustand": "^5.0.3"
+  },
+  "devDependencies": {
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-unused-imports": "^4.1.4",
+    "prettier": "^3.5.3"
   }
 }
