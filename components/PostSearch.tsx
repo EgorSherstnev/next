@@ -1,29 +1,16 @@
 'use client'
 
-// import { getPostsBySearch } from '@/sevices/getPosts'
 import { usePosts } from '@/store'
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 
-// type Props = {
-//     onSearch: (value: any[]) => void
-// }
-
-// const PostSearch = ({onSearch}: Props) => {
 const PostSearch = () => {
     const [search, setSearch] = useState('')
-    const [getPostsBySearch] = usePosts(state => [
-        state.getPostsBySearch
-    ])
+    const getPostsBySearch = usePosts(state => state.getPostsBySearch)
 
-    const handleSubmit: React.FormEventHandler<HTMLFormElement> = async(event) => {
-        event.preventDefault()
-
-        await getPostsBySearch(search)
-
-        // const posts = await getPostsBySearch(search)
-
-        // onSearch(posts)
-    }
+    const handleSubmit: React.FormEventHandler<HTMLFormElement> = React.useCallback(async (event) => {
+        event.preventDefault();
+        await getPostsBySearch(search);
+    }, [getPostsBySearch, search])
 
     return (
         <form onSubmit={handleSubmit}>
@@ -31,11 +18,11 @@ const PostSearch = () => {
                 type='search' 
                 placeholder='search' 
                 value={search} 
-                onChange={event => setSearch(event.target.value)} 
+                onChange={e => setSearch(e.target.value)} 
             />
             <button type='submit'>Search</button>
         </form>
     )
 }
 
-export {PostSearch}
+export { PostSearch }

@@ -15,21 +15,24 @@ type Props = {
 
 const Navigation = ({navLinks}:Props) => {
   const pathname = usePathname()
+
   return (
-    <>{
-      navLinks.map(link => {
-        const isActive = pathname === link.href
-        return (
-          <Link
-            key={link.label}
-            href={link.href}
-            className={ isActive ? 'active' : '' }
-          >
-            {link.label}
-          </Link>
-        )
-      })
-    }</>
+    <>
+      {
+        navLinks.map(link => {
+          const isActive = pathname === link.href
+          return (
+            <Link
+              key={link.label}
+              href={link.href}
+              className={ isActive ? 'active' : '' }
+            >
+              {link.label}
+            </Link>
+          )
+        })
+      }
+    </>
   )
 }
 
