@@ -3,7 +3,7 @@
 import { Posts } from "@/components/Posts"
 import { PostSearch } from "@/components/PostSearch"
 import { getAllPosts } from "@/sevices/getPosts"
-import { UsePosts, usePosts } from "@/store"
+// import { UsePosts, usePosts } from "@/store"
 import { Metadata } from "next"
 import Link from "next/link"
 import { useEffect, useState } from "react"
